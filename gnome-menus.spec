@@ -5,7 +5,7 @@ Version:	2.9.90
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.9/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.9/%{name}-%{version}.tar.bz2
 # Source0-md5:	9d08c1a6a69dd2b521464c147ac51e9b
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
@@ -18,11 +18,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 The package contains an implementation of the draft "Desktop Menu
 Specification" from freedesktop.org:
-http://www.freedesktop.org/Standards/menu-spec
+http://www.freedesktop.org/Standards/menu-spec .
 
 %description -l pl
 Pakiet zawiera implementacjê specyfikacji menu systemów biurkowych z
-freedesktop.org: http://www.freedesktop.org/Standards/menu-spec
+freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
 
 %package devel
 Summary:	Header files of gnome-menus library
