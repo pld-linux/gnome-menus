@@ -1,16 +1,16 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.10.0
-Release:	2
+Version:	2.10.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	7c0776f79dcd08de97de2b6f9c17c830
+# Source0-md5:	83d9695a35ed2215620e8773ee918b8a
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.6.1
+BuildRequires:	glib2-devel >= 1:2.6.3
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libtool
@@ -46,7 +46,7 @@ Summary:	Header files of gnome-menus library
 Summary(pl):	Pliki nag³ówkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.6.1
+Requires:	glib2-devel >= 1:2.6.3
 
 %description devel
 Headers for gnome-menus library.
@@ -76,7 +76,6 @@ Statyczna biblioteka gnome-menu.
 %{__automake}
 %configure \
 	--enable-static
-
 %{__make}
 
 %install
