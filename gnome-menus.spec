@@ -2,7 +2,7 @@ Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	2.9.90
-Release:	1.1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.9/%{name}-%{version}.tar.bz2
@@ -15,6 +15,8 @@ BuildRequires:	gnome-vfs2-devel >= 2.8.2
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libtool
 Requires:	%{name}-libs = %{version}-%{release}
+Provides:	applnk = 1.9.4
+Obsoletes:	applnk
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,6 +32,8 @@ freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
 Summary:	gnome-menus library
 Summary(pl):	Biblioteka gnome-menus
 Group:		Libraries
+Requires:	applnk >= 1.9.4
+Obsoletes:	gnome-vfs2-module-menu
 
 %description libs
 gnome-menus library.
