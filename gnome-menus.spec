@@ -2,7 +2,7 @@ Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	2.9.90
-Release:	1
+Release:	1.1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.9/%{name}-%{version}.tar.bz2
@@ -12,7 +12,9 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.6.1
 BuildRequires:	gnome-vfs2-devel >= 2.8.2
+BuildRequires:	intltool >= 0.31
 BuildRequires:	libtool
+Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,11 +26,22 @@ http://www.freedesktop.org/Standards/menu-spec .
 Pakiet zawiera implementacjê specyfikacji menu systemów biurkowych z
 freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
 
+%package libs
+Summary:	gnome-menus library
+Summary(pl):	Biblioteka gnome-menus
+Group:		Libraries
+
+%description libs
+gnome-menus library.
+
+%description libs -l pl
+Biblioteka gnome-menus.
+
 %package devel
 Summary:	Header files of gnome-menus library
 Summary(pl):	Pliki nag³ówkowe biblioteki gnome-menus
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.6.1
 
 %description devel
@@ -76,16 +89,19 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/libgnome-menu.so.*.*.*
 %{_sysconfdir}/xdg/menus
 %{_datadir}/desktop-directories
+
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libgnome-menu.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
