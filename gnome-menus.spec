@@ -46,8 +46,10 @@ Domy¶lny filtr gnome-menus. Zawiera wszystkie aplikacje.
 Summary:	gnome-menus library
 Summary(pl):	Biblioteka gnome-menus
 Group:		Libraries
+Obsoletes:	gnome-vfs-menu-module
 Obsoletes:	gnome-vfs2-module-menu
 Obsoletes:	gnome-vfs2-vfolder-menu
+Provides:	gnome-vfs-menu-module
 Provides:	gnome-vfs2-module-menu
 
 %description libs
