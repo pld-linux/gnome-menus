@@ -12,6 +12,7 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.6.3
+BuildRequires:	gnome-common
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libtool
