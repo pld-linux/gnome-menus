@@ -16,6 +16,7 @@ BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libtool
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	%{name}-filter
 Obsoletes:	applnk
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -27,6 +28,19 @@ http://www.freedesktop.org/Standards/menu-spec .
 %description -l pl
 Pakiet zawiera implementacjê specyfikacji menu systemów biurkowych z
 freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
+
+%package filter-default
+Summary:	Default gnome-menus filter
+Summary(pl):	Domy¶lny filtr gnome-menus
+Group:		X11/Applications
+Provides:	%{name}-filter
+Conflicts:	%{name}-filter-noconsole
+
+%description filter-default
+Default gnome-menus filter. Includes all applications.
+
+%description filter-default -l pl
+Domy¶lny filtr gnome-menus. Zawiera wszystkie aplikacje.
 
 %package libs
 Summary:	gnome-menus library
@@ -99,8 +113,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/xdg/menus
 %{_datadir}/desktop-directories
+
+%files filter-default
+%defattr(644,root,root,755)
+%{_sysconfdir}/xdg/menus
 
 %files libs
 %defattr(644,root,root,755)
