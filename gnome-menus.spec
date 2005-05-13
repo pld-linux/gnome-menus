@@ -34,7 +34,7 @@ Summary:	Default gnome-menus filter
 Summary(pl):	Domy¶lny filtr gnome-menus
 Group:		X11/Applications
 Provides:	%{name}-filter
-Conflicts:	%{name}-filter-noconsole
+Conflicts:	%{name}-filter-desktop
 
 %description filter-default
 Default gnome-menus filter. Includes all applications.
