@@ -2,7 +2,7 @@ Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	2.10.1
-Release:	5
+Release:	6
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.10/%{name}-%{version}.tar.bz2
@@ -48,7 +48,7 @@ Summary:	gnome-menus library
 Summary(pl):	Biblioteka gnome-menus
 Group:		Libraries
 Provides:	gnome-vfs-menu-module = 1.1-1
-Provides:	gnome-vfs2-module-menu 
+Provides:	gnome-vfs2-module-menu = 1.1-1 
 Obsoletes:	gnome-vfs-menu-module
 Obsoletes:	gnome-vfs2-module-menu
 Obsoletes:	gnome-vfs2-vfolder-menu
