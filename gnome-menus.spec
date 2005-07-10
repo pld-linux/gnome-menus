@@ -1,6 +1,3 @@
-# TODO:
-# - package python stuff (menu editor)
-#
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
@@ -35,6 +32,18 @@ http://www.freedesktop.org/Standards/menu-spec .
 %description -l pl
 Pakiet zawiera implementacjê specyfikacji menu systemów biurkowych z
 freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
+
+%package editor
+Summary:	Simple menu editor
+Summary(pl):	Prosty edytor menu
+Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
+
+%description editor
+Simple menu editor.
+
+%description editor -l pl
+Prosty edytor menu.
 
 %package filter-default
 Summary:	Default gnome-menus filter
@@ -112,6 +121,8 @@ rm -rf $RPM_BUILD_ROOT
 	pkgconfigdir=%{_pkgconfigdir}
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+rm -f $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
+rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -126,6 +137,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/desktop-directories
+
+%files editor
+%defattr(644,root,root,755)
+%{_datadir}/%{name}
+%{py_sitedir}/GMenuSimpleEditor/*.py[co]
+%{py_sitedir}/*.so
 
 %files filter-default
 %defattr(644,root,root,755)
