@@ -2,7 +2,7 @@ Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	2.11.1.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.11/%{name}-%{version}.tar.bz2
@@ -135,11 +135,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/gnome-menu-spec-test
 %{_datadir}/desktop-directories
 
 %files editor
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/gmenu-simple-editor
 %{_datadir}/%{name}
 %{py_sitedir}/GMenuSimpleEditor/*.py[co]
 %{py_sitedir}/*.so
