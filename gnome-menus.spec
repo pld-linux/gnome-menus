@@ -19,6 +19,7 @@ BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	python-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	%{name}-filter
 Provides:	xdg-menus
