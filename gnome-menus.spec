@@ -1,14 +1,13 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.11.91
+Version:	2.11.92
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.11/%{name}-%{version}.tar.bz2
-# Source0-md5:	7e90fda926e28dc31043281562a83da4
+# Source0-md5:	75ba6497923b00a2f186f27a135b6800
 Patch0:		%{name}-PLD.patch
-Patch1:		%{name}-pl.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -105,7 +104,6 @@ Statyczna biblioteka gnome-menu.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
