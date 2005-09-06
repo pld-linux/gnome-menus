@@ -1,23 +1,24 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.10.2
+Version:	2.12.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	97b0ad03ea219cc8f5c02585db1d237e
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.12/%{name}-%{version}.tar.bz2
+# Source0-md5:	615392c4f729f70c03aa3aa7dbe40a95
 Patch0:		%{name}-PLD.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.6.3
+BuildRequires:	glib2-devel >= 1:2.8.1
 BuildRequires:	gnome-common
-BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
+BuildRequires:	gnome-vfs2-devel >= 2.12.0
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	python-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	%{name}-filter
 Provides:	xdg-menus
@@ -32,6 +33,18 @@ http://www.freedesktop.org/Standards/menu-spec .
 %description -l pl
 Pakiet zawiera implementacjê specyfikacji menu systemów biurkowych z
 freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
+
+%package editor
+Summary:	Simple menu editor
+Summary(pl):	Prosty edytor menu
+Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
+
+%description editor
+Simple menu editor.
+
+%description editor -l pl
+Prosty edytor menu.
 
 %package filter-default
 Summary:	Default gnome-menus filter
@@ -68,7 +81,7 @@ Summary:	Header files of gnome-menus library
 Summary(pl):	Pliki nag³ówkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.6.3
+Requires:	glib2-devel >= 1:2.8.1
 
 %description devel
 Headers for gnome-menus library.
@@ -109,6 +122,8 @@ rm -rf $RPM_BUILD_ROOT
 	pkgconfigdir=%{_pkgconfigdir}
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+rm -f $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
+rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -121,8 +136,16 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/gnome-menu-spec-test
 %{_datadir}/desktop-directories
+
+%files editor
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/gmenu-simple-editor
+%{_datadir}/%{name}
+%{_desktopdir}/gmenu-simple-editor.desktop
+%{py_sitedir}/GMenuSimpleEditor/*.py[co]
+%{py_sitedir}/*.so
 
 %files filter-default
 %defattr(644,root,root,755)
