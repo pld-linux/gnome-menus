@@ -145,7 +145,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/gmenu-simple-editor.desktop
 %{py_sitedir}/GMenuSimpleEditor/*.py[co]
-%{py_sitedir}/*.so
+%attr(755,root,root) %{py_sitedir}/*.so
 
 %files filter-default
 %defattr(644,root,root,755)
