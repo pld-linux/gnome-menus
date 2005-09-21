@@ -39,6 +39,7 @@ Summary:	Simple menu editor
 Summary(pl):	Prosty edytor menu
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
+Requires:	python-pygtk-glade
 
 %description editor
 Simple menu editor.
