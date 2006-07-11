@@ -1,21 +1,21 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.14.0
-Release:	4
+Version:	2.15.4.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	7aa0c08fc8b9caabb4be46e1cfb595fc
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.15/%{name}-%{version}.tar.bz2
+# Source0-md5:	2a28a9abba689205a05ece3d0fa93a0b
 Patch0:		%{name}-PLD.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.11.2
+BuildRequires:	glib2-devel >= 1:2.12.0
 BuildRequires:	gnome-common
-BuildRequires:	gnome-vfs2-devel >= 2.15.1
-BuildRequires:	intltool >= 0.31
+BuildRequires:	gnome-vfs2-devel >= 2.15.3
+BuildRequires:	intltool >= 0.35
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel
@@ -112,6 +112,7 @@ Statyczna biblioteka gnome-menu.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
+LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--enable-static
 %{__make}
@@ -123,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	pkgconfigdir=%{_pkgconfigdir}
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{no,ug}
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/ug
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
 
