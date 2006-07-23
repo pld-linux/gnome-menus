@@ -1,0 +1,12 @@
+diff -urN gnome-menus-2.14.0.orig/libmenu/gmenu-tree.c gnome-menus-2.14.0/libmenu/gmenu-tree.c
+--- gnome-menus-2.14.0.orig/libmenu/gmenu-tree.c	2006-07-23 18:44:56.038867750 +0200
++++ gnome-menus-2.14.0/libmenu/gmenu-tree.c	2006-07-23 19:03:26.840288500 +0200
+@@ -2320,7 +2320,7 @@
+       break;
+ 
+     case MENU_LAYOUT_NODE_KDE_LEGACY_DIRS:
+-      resolve_kde_legacy_dirs (tree, loaded_menu_files, layout);
++      //resolve_kde_legacy_dirs (tree, loaded_menu_files, layout);
+       break;
+ 
+     case MENU_LAYOUT_NODE_PASSTHROUGH:
