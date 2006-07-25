@@ -1,21 +1,21 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.15.4.1
-Release:	2
+Version:	2.15.90
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	2a28a9abba689205a05ece3d0fa93a0b
+# Source0-md5:	e3c0e6bb376ad250aae6fb99b06f94be
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.0
+BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gnome-common
-BuildRequires:	gnome-vfs2-devel >= 2.15.3
+BuildRequires:	gnome-vfs2-devel >= 2.15.90
 BuildRequires:	intltool >= 0.35
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
@@ -83,8 +83,8 @@ Summary:	Header files of gnome-menus library
 Summary(pl):	Pliki nag³ówkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.11.2
-Requires:	gnome-vfs2-libs >= 2.15.1
+Requires:	glib2-devel >= 1:2.12.1
+Requires:	gnome-vfs2-libs >= 2.15.90
 
 %description devel
 Headers for gnome-menus library.
@@ -114,7 +114,6 @@ Statyczna biblioteka gnome-menu.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--enable-static
 %{__make}
