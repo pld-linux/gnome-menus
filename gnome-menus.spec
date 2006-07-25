@@ -8,6 +8,7 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.15/%{name}-%{version}.tar.bz2
 # Source0-md5:	2a28a9abba689205a05ece3d0fa93a0b
 Patch0:		%{name}-PLD.patch
+Patch1:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -106,6 +107,7 @@ Statyczna biblioteka gnome-menu.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
