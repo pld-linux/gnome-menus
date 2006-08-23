@@ -129,7 +129,7 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{gn,ug}
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
 
-install -d %{_sysconfdir}/xdg/menus/applications-merged
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
 
 %find_lang %{name} --with-gnome --all-name
 
