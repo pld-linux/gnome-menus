@@ -2,7 +2,7 @@ Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	2.16.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.16/%{name}-%{version}.tar.bz2
@@ -16,7 +16,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.3
 BuildRequires:	gnome-common
 BuildRequires:	gnome-vfs2-devel >= 2.16.0
-BuildRequires:	intltool >= 0.35
+BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel
