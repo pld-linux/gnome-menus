@@ -1,5 +1,5 @@
 Summary:	Implementation of the draft Desktop Menu Specification
-Summary(pl):	Implementacja specyfikacji menu systemÛw biurkowych
+Summary(pl.UTF-8):   Implementacja specyfikacji menu system√≥w biurkowych
 Name:		gnome-menus
 Version:	2.16.1
 Release:	1
@@ -31,13 +31,13 @@ The package contains an implementation of the draft "Desktop Menu
 Specification" from freedesktop.org:
 http://www.freedesktop.org/Standards/menu-spec .
 
-%description -l pl
-Pakiet zawiera implementacjÍ specyfikacji menu systemÛw biurkowych z
+%description -l pl.UTF-8
+Pakiet zawiera implementacjƒô specyfikacji menu system√≥w biurkowych z
 freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
 
 %package editor
 Summary:	Simple menu editor
-Summary(pl):	Prosty edytor menu
+Summary(pl.UTF-8):   Prosty edytor menu
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	python-pygtk-glade >= 2.9.6
@@ -45,12 +45,12 @@ Requires:	python-pygtk-glade >= 2.9.6
 %description editor
 Simple menu editor.
 
-%description editor -l pl
+%description editor -l pl.UTF-8
 Prosty edytor menu.
 
 %package filter-default
 Summary:	Default gnome-menus filter
-Summary(pl):	Domy∂lny filtr gnome-menus
+Summary(pl.UTF-8):   Domy≈õlny filtr gnome-menus
 Group:		X11/Applications
 Requires:	gnome-menus
 Provides:	%{name}-filter
@@ -59,12 +59,12 @@ Obsoletes:	%{name}-filter-desktop
 %description filter-default
 Default gnome-menus filter. Includes all applications.
 
-%description filter-default -l pl
-Domy∂lny filtr gnome-menus. Zawiera wszystkie aplikacje.
+%description filter-default -l pl.UTF-8
+Domy≈õlny filtr gnome-menus. Zawiera wszystkie aplikacje.
 
 %package libs
 Summary:	gnome-menus library
-Summary(pl):	Biblioteka gnome-menus
+Summary(pl.UTF-8):   Biblioteka gnome-menus
 Group:		Libraries
 Provides:	gnome-vfs-menu-module = 1.1-1
 Provides:	gnome-vfs2-module-menu = 1.1-1 
@@ -75,12 +75,12 @@ Obsoletes:	gnome-vfs2-vfolder-menu
 %description libs
 gnome-menus library.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteka gnome-menus.
 
 %package devel
 Summary:	Header files of gnome-menus library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki gnome-menus
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.12.4
@@ -89,19 +89,19 @@ Requires:	gnome-vfs2-devel >= 2.16.3
 %description devel
 Headers for gnome-menus library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki gnome-menus.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki gnome-menus.
 
 %package static
 Summary:	Static gnome-menus library
-Summary(pl):	Statyczna biblioteka gnome-menus
+Summary(pl.UTF-8):   Statyczna biblioteka gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static versions of gnome-menu library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka gnome-menu.
 
 %prep
