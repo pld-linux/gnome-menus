@@ -1,26 +1,28 @@
 Summary:	Implementation of the draft Desktop Menu Specification
-Summary(pl):	Implementacja specyfikacji menu systemÛw biurkowych
+Summary(pl.UTF-8):	Implementacja specyfikacji menu system√≥w biurkowych
 Name:		gnome-menus
-Version:	2.15.4.1
-Release:	2
+Version:	2.17.92
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	2a28a9abba689205a05ece3d0fa93a0b
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.17/%{name}-%{version}.tar.bz2
+# Source0-md5:	db514716a27e3691ea0fbe4a2d167067
 Patch0:		%{name}-PLD.patch
+Patch1:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.0
+BuildRequires:	glib2-devel >= 1:2.12.9
 BuildRequires:	gnome-common
-BuildRequires:	gnome-vfs2-devel >= 2.15.3
-BuildRequires:	intltool >= 0.35
+BuildRequires:	intltool >= 0.35.5
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	python-devel
-Requires:	%{name}-libs = %{version}-%{release}
+BuildRequires:	python-devel >= 2.2
+BuildRequires:	rpm-pythonprov
 Requires:	%{name}-filter
+Requires:	%{name}-libs = %{version}-%{release}
 Provides:	xdg-menus
 Obsoletes:	applnk
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -30,43 +32,43 @@ The package contains an implementation of the draft "Desktop Menu
 Specification" from freedesktop.org:
 http://www.freedesktop.org/Standards/menu-spec .
 
-%description -l pl
-Pakiet zawiera implementacjÍ specyfikacji menu systemÛw biurkowych z
+%description -l pl.UTF-8
+Pakiet zawiera implementacjƒô specyfikacji menu system√≥w biurkowych z
 freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
 
 %package editor
 Summary:	Simple menu editor
-Summary(pl):	Prosty edytor menu
+Summary(pl.UTF-8):	Prosty edytor menu
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	python-pygtk-glade
+Requires:	python-pygtk-glade >= 2:2.10.4
 
 %description editor
 Simple menu editor.
 
-%description editor -l pl
+%description editor -l pl.UTF-8
 Prosty edytor menu.
 
 %package filter-default
 Summary:	Default gnome-menus filter
-Summary(pl):	Domy∂lny filtr gnome-menus
+Summary(pl.UTF-8):	Domy≈õlny filtr gnome-menus
 Group:		X11/Applications
 Requires:	gnome-menus
 Provides:	%{name}-filter
-Obsoletes:	%{name}-filter-desktop
+Obsoletes:	gnome-menus-filter-desktop
 
 %description filter-default
 Default gnome-menus filter. Includes all applications.
 
-%description filter-default -l pl
-Domy∂lny filtr gnome-menus. Zawiera wszystkie aplikacje.
+%description filter-default -l pl.UTF-8
+Domy≈õlny filtr gnome-menus. Zawiera wszystkie aplikacje.
 
 %package libs
 Summary:	gnome-menus library
-Summary(pl):	Biblioteka gnome-menus
+Summary(pl.UTF-8):	Biblioteka gnome-menus
 Group:		Libraries
 Provides:	gnome-vfs-menu-module = 1.1-1
-Provides:	gnome-vfs2-module-menu = 1.1-1 
+Provides:	gnome-vfs2-module-menu = 1.1-1
 Obsoletes:	gnome-vfs-menu-module
 Obsoletes:	gnome-vfs2-module-menu
 Obsoletes:	gnome-vfs2-vfolder-menu
@@ -74,45 +76,47 @@ Obsoletes:	gnome-vfs2-vfolder-menu
 %description libs
 gnome-menus library.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteka gnome-menus.
 
 %package devel
 Summary:	Header files of gnome-menus library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki gnome-menus
+Summary(pl.UTF-8):	Pliki nag≈Ç√≥wkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.11.2
-Requires:	gnome-vfs2-libs >= 2.15.1
+Requires:	fam-devel
+Requires:	glib2-devel >= 1:2.12.9
 
 %description devel
 Headers for gnome-menus library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki gnome-menus.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki gnome-menus.
 
 %package static
 Summary:	Static gnome-menus library
-Summary(pl):	Statyczna biblioteka gnome-menus
+Summary(pl.UTF-8):	Statyczna biblioteka gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static versions of gnome-menu library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka gnome-menu.
 
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
+%{__glib_gettextize}
+%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--enable-static
 %{__make}
@@ -124,9 +128,11 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	pkgconfigdir=%{_pkgconfigdir}
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{gn,ug}
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{be\@latin,gn}
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
+
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
 
 %find_lang %{name} --with-gnome --all-name
 
