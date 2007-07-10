@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.18.2
+Version:	2.18.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	2d4d15dccda0c1ec4d1d9087756d6375
+# Source0-md5:	e2b97b01b33b9744baf26982a8ad588a
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
@@ -118,7 +118,8 @@ Statyczna biblioteka gnome-menu.
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-static
+	--enable-static \
+	--enable-python
 %{__make}
 
 %install
