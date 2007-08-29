@@ -5,7 +5,7 @@ Version:	2.19.90
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.19/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.19/%{name}-%{version}.tar.bz2
 # Source0-md5:	69b746d6776269882ff05c2f20e32390
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-nokde.patch
@@ -14,9 +14,9 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.11
+BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common
-BuildRequires:	intltool >= 0.35.5
+BuildRequires:	intltool >= 0.36.1
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 2.2
@@ -85,7 +85,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	fam-devel
-Requires:	glib2-devel >= 1:2.12.11
+Requires:	glib2-devel >= 1:2.14.0
 
 %description devel
 Headers for gnome-menus library.
