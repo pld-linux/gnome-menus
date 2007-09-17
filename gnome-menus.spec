@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.18.3
-Release:	2
+Version:	2.20.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-menus/2.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	e2b97b01b33b9744baf26982a8ad588a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.20/%{name}-%{version}.tar.bz2
+# Source0-md5:	7c3580c7c59f36a49f6624932a743d31
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
@@ -14,9 +14,9 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.11
+BuildRequires:	glib2-devel >= 1:2.14.1
 BuildRequires:	gnome-common
-BuildRequires:	intltool >= 0.35.5
+BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 2.2
@@ -41,7 +41,7 @@ Summary:	Simple menu editor
 Summary(pl.UTF-8):	Prosty edytor menu
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	python-pygtk-glade >= 2:2.10.4
+Requires:	python-pygtk-glade >= 2:2.12.0
 
 %description editor
 Simple menu editor.
@@ -85,7 +85,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	fam-devel
-Requires:	glib2-devel >= 1:2.12.11
+Requires:	glib2-devel >= 1:2.14.1
 
 %description devel
 Headers for gnome-menus library.
