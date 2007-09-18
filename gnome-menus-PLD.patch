@@ -41,7 +41,6 @@ diff -urN gnome-menus-2.10.1.orig/layout/applications.menu gnome-menus-2.10.1/la
      <OnlyUnallocated/>
      <Include>
        <And>
--        <Category>Application</Category>
 +        <Or>
 +          <Category>Application</Category>
 +          <Category>Amusement</Category>
@@ -50,12 +49,12 @@ diff -urN gnome-menus-2.10.1.orig/layout/applications.menu gnome-menus-2.10.1/la
 +        </Or>
          <Not><Category>Core</Category></Not>
          <Not><Category>Settings</Category></Not>
+         <Not><Category>Screensaver</Category></Not>
        </And>
      </Include>
 +    <Exclude>
 +      <Filename>yelp.desktop</Filename>
 +    </Exclude>
-+
    </Menu> <!-- End Other -->
  
  </Menu> <!-- End Applications -->
