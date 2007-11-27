@@ -21,6 +21,7 @@ BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	rpm-pythonprov
+BuildRequires:	sed >= 4.0
 Requires:	%{name}-filter
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	xdg-menus
