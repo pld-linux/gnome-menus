@@ -1,20 +1,19 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.21.2
+Version:	2.21.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.21/%{name}-%{version}.tar.bz2
-# Source0-md5:	3e97ec59d3ec4d62b3fbda8015de1d1e
+# Source0-md5:	1605f408e1b5d36223544942f659d31c
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.14.1
+BuildRequires:	glib2-devel >= 1:2.15.0
 BuildRequires:	gnome-common
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libtool
@@ -87,8 +86,7 @@ Summary:	Header files of gnome-menus library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	fam-devel
-Requires:	glib2-devel >= 1:2.14.1
+Requires:	glib2-devel >= 1:2.15.0
 
 %description devel
 Headers for gnome-menus library.
@@ -113,8 +111,8 @@ Statyczna biblioteka gnome-menu.
 %patch0 -p1
 %patch1 -p1
 
-sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
-mv po/sr\@{Latn,latin}.po
+sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
+mv po/sr@{Latn,latin}.po
 
 %build
 %{__glib_gettextize}
@@ -124,6 +122,7 @@ mv po/sr\@{Latn,latin}.po
 %{__autoconf}
 %{__automake}
 %configure \
+	--with-monitor-backend=gio \
 	--enable-static \
 	--enable-python
 %{__make}
@@ -161,7 +160,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/gmenu-simple-editor.desktop
 %dir %{py_sitedir}/GMenuSimpleEditor
-%attr(755,root,root) %{py_sitedir}/*.so
+%attr(755,root,root) %{py_sitedir}/gmenu.so
 %{py_sitedir}/GMenuSimpleEditor/*.py[co]
 
 %files filter-default
@@ -174,11 +173,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_pkgconfigdir}/*.pc
-%{_includedir}/*
+%attr(755,root,root) %{_libdir}/libgnome-menu.so
+%{_libdir}/libgnome-menu.la
+%{_pkgconfigdir}/libgnome-menu.pc
+%{_includedir}/gnome-menus
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libgnome-menu.a
