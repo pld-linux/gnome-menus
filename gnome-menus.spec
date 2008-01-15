@@ -1,19 +1,19 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.21.3
+Version:	2.21.5
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.21/%{name}-%{version}.tar.bz2
-# Source0-md5:	1605f408e1b5d36223544942f659d31c
+# Source0-md5:	e839651bd7eb9b5c579d12f324dc193e
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.15.0
+BuildRequires:	glib2-devel >= 1:2.15.2
 BuildRequires:	gnome-common
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libtool
@@ -21,9 +21,10 @@ BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
-Requires:	%{name}-filter
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	xdg-menus
+Obsoletes:	gnome-menus-filter-default
+Obsoletes:	gnome-menus-filter-desktop
 Conflicts:	applnk
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -50,20 +51,6 @@ Simple menu editor.
 
 %description editor -l pl.UTF-8
 Prosty edytor menu.
-
-%package filter-default
-Summary:	Default gnome-menus filter
-Summary(pl.UTF-8):	Domyślny filtr gnome-menus
-Group:		X11/Applications
-Requires:	gnome-menus
-Provides:	%{name}-filter
-Obsoletes:	gnome-menus-filter-desktop
-
-%description filter-default
-Default gnome-menus filter. Includes all applications.
-
-%description filter-default -l pl.UTF-8
-Domyślny filtr gnome-menus. Zawiera wszystkie aplikacje.
 
 %package libs
 Summary:	gnome-menus library
@@ -152,6 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/gnome-menu-spec-test
+%{_sysconfdir}/xdg/menus
 %{_datadir}/desktop-directories
 
 %files editor
@@ -162,10 +150,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/GMenuSimpleEditor
 %attr(755,root,root) %{py_sitedir}/gmenu.so
 %{py_sitedir}/GMenuSimpleEditor/*.py[co]
-
-%files filter-default
-%defattr(644,root,root,755)
-%{_sysconfdir}/xdg/menus
 
 %files libs
 %defattr(644,root,root,755)
