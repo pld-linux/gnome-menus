@@ -1,19 +1,19 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.21.5
+Version:	2.21.90
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.21/%{name}-%{version}.tar.bz2
-# Source0-md5:	e839651bd7eb9b5c579d12f324dc193e
+# Source0-md5:	a218861176981310fa82739df308398c
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.15.2
+BuildRequires:	glib2-devel >= 1:2.15.3
 BuildRequires:	gnome-common
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libtool
@@ -73,7 +73,7 @@ Summary:	Header files of gnome-menus library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.15.0
+Requires:	glib2-devel >= 1:2.15.3
 
 %description devel
 Headers for gnome-menus library.
@@ -154,6 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-menu.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgnome-menu.so.2
 
 %files devel
 %defattr(644,root,root,755)
