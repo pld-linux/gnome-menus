@@ -1,20 +1,19 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.20.3
+Version:	2.22.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	b8ab05f5edfdc3e6a46662a504934657
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.22/%{name}-%{version}.tar.bz2
+# Source0-md5:	b504e4ea92fcf5b1c2817d682ac5f61c
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.14.1
+BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gnome-common
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libtool
@@ -22,9 +21,10 @@ BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
-Requires:	%{name}-filter
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	xdg-menus
+Obsoletes:	gnome-menus-filter-default
+Obsoletes:	gnome-menus-filter-desktop
 Conflicts:	applnk
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -52,20 +52,6 @@ Simple menu editor.
 %description editor -l pl.UTF-8
 Prosty edytor menu.
 
-%package filter-default
-Summary:	Default gnome-menus filter
-Summary(pl.UTF-8):	Domyślny filtr gnome-menus
-Group:		X11/Applications
-Requires:	gnome-menus
-Provides:	%{name}-filter
-Obsoletes:	gnome-menus-filter-desktop
-
-%description filter-default
-Default gnome-menus filter. Includes all applications.
-
-%description filter-default -l pl.UTF-8
-Domyślny filtr gnome-menus. Zawiera wszystkie aplikacje.
-
 %package libs
 Summary:	gnome-menus library
 Summary(pl.UTF-8):	Biblioteka gnome-menus
@@ -87,8 +73,7 @@ Summary:	Header files of gnome-menus library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	fam-devel
-Requires:	glib2-devel >= 1:2.14.1
+Requires:	glib2-devel >= 1:2.16.0
 
 %description devel
 Headers for gnome-menus library.
@@ -113,8 +98,8 @@ Statyczna biblioteka gnome-menu.
 %patch0 -p1
 %patch1 -p1
 
-sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
-mv po/sr\@{Latn,latin}.po
+sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
+mv po/sr@{Latn,latin}.po
 
 %build
 %{__glib_gettextize}
@@ -122,8 +107,10 @@ mv po/sr\@{Latn,latin}.po
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
+	--with-monitor-backend=gio \
 	--enable-static \
 	--enable-python
 %{__make}
@@ -135,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	pkgconfigdir=%{_pkgconfigdir}
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/gn
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{gn,io}
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
 
@@ -152,7 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/gnome-menu-spec-test
+%{_sysconfdir}/xdg/menus
 %{_datadir}/desktop-directories
 
 %files editor
@@ -161,24 +148,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/gmenu-simple-editor.desktop
 %dir %{py_sitedir}/GMenuSimpleEditor
-%attr(755,root,root) %{py_sitedir}/*.so
+%attr(755,root,root) %{py_sitedir}/gmenu.so
 %{py_sitedir}/GMenuSimpleEditor/*.py[co]
-
-%files filter-default
-%defattr(644,root,root,755)
-%{_sysconfdir}/xdg/menus
 
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-menu.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgnome-menu.so.2
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_pkgconfigdir}/*.pc
-%{_includedir}/*
+%attr(755,root,root) %{_libdir}/libgnome-menu.so
+%{_libdir}/libgnome-menu.la
+%{_pkgconfigdir}/libgnome-menu.pc
+%{_includedir}/gnome-menus
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libgnome-menu.a
