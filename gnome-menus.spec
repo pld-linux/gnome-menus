@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.22.1
+Version:	2.22.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	6e31d10da8c1ef315ca2d7f02e807395
+# Source0-md5:	2bb185643632b28f4dba4b8201b8e230
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
