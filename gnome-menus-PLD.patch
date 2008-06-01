@@ -1,6 +1,6 @@
-diff -urN gnome-menus-2.10.1.orig/layout/applications.menu gnome-menus-2.10.1/layout/applications.menu
---- gnome-menus-2.10.1.orig/layout/applications.menu	2005-04-18 13:00:45.000000000 +0200
-+++ gnome-menus-2.10.1/layout/applications.menu	2005-04-18 14:19:13.000000000 +0200
+diff -urN gnome-menus-2.22.2/layout/applications.menu gnome-menus-2.22.2.new/layout/applications.menu
+--- gnome-menus-2.22.2/layout/applications.menu	2008-05-26 18:10:56.000000000 +0200
++++ gnome-menus-2.22.2.new/layout/applications.menu	2008-06-01 13:06:44.000000000 +0200
 @@ -24,7 +24,11 @@
      <Directory>Accessories.directory</Directory>
      <Include>
@@ -11,10 +11,10 @@ diff -urN gnome-menus-2.10.1.orig/layout/applications.menu gnome-menus-2.10.1/la
 +          <Category>TerminalEmulator</Category>
 +          <Category>TextEditor</Category>
 +        </Or>
-         <Not>
-           <Category>System</Category>
-         </Not>
-@@ -108,7 +112,11 @@
+ 	<!-- Accessibility spec must have either the Utility or Settings
+ 	     category, and we display an accessibility submenu already for
+ 	     the ones that do not have Settings, so don't display accessibility
+@@ -109,7 +113,11 @@
      <Directory>Multimedia.directory</Directory>
      <Include>
        <And>
@@ -27,17 +27,15 @@ diff -urN gnome-menus-2.10.1.orig/layout/applications.menu gnome-menus-2.10.1/la
        </And>
      </Include>
    </Menu>   <!-- End Multimedia -->
-@@ -120,6 +128,9 @@
+@@ -121,6 +129,7 @@
      <Include>
        <And>
          <Category>Office</Category>
-+        <Not>
-+          <Category>TextEditor</Category>
-+        </Not>
++        <Not><Category>TextEditor</Category></Not>
        </And>
      </Include>
    </Menu> <!-- End Office -->
-@@ -143,11 +154,20 @@
+@@ -144,11 +153,20 @@
      <OnlyUnallocated/>
      <Include>
        <And>
