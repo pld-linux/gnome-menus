@@ -1,26 +1,24 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.22.2
+Version:	2.24.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	2bb185643632b28f4dba4b8201b8e230
-Patch0:		%{name}-PLD.patch
-Patch1:		%{name}-nokde.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.24/%{name}-%{version}.tar.bz2
+# Source0-md5:	1816a0d21ef99d5b3a8bcd033c88f732
+Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gnome-common
-BuildRequires:	intltool >= 0.36.2
+BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	rpm-pythonprov
-BuildRequires:	sed >= 4.0
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	xdg-menus
 Obsoletes:	gnome-menus-filter-default
@@ -96,10 +94,6 @@ Statyczna biblioteka gnome-menu.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-
-sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
-mv po/sr@{Latn,latin}.po
 
 %build
 %{__glib_gettextize}
@@ -110,7 +104,6 @@ mv po/sr@{Latn,latin}.po
 %{__autoheader}
 %{__automake}
 %configure \
-	--with-monitor-backend=gio \
 	--enable-static \
 	--enable-python
 %{__make}
@@ -119,8 +112,7 @@ mv po/sr@{Latn,latin}.po
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	pkgconfigdir=%{_pkgconfigdir}
+	DESTDIR=$RPM_BUILD_ROOT
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{gn,io}
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
