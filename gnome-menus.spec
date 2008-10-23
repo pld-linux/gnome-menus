@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.24.0
-Release:	2
+Version:	2.24.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.24/%{name}-%{version}.tar.bz2
-# Source0-md5:	1816a0d21ef99d5b3a8bcd033c88f732
+# Source0-md5:	7b8a566cddb40d3ed1c1848b0a0d6c40
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
@@ -17,7 +17,7 @@ BuildRequires:	gnome-common
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	python-devel >= 2.2
+BuildRequires:	python-devel >= 2.3
 BuildRequires:	rpm-pythonprov
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	xdg-menus
