@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.26.1
+Version:	2.26.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.26/%{name}-%{version}.tar.bz2
-# Source0-md5:	c5100879f6ff9750d4bc7e553671ad93
+# Source0-md5:	23a7375dd20238184f2fcccc4d83846b
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
@@ -99,7 +99,7 @@ Statyczna biblioteka gnome-menu.
 %{__glib_gettextize}
 %{__intltoolize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -114,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{gn,io}
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{ca@valencia,dv,gn,io}
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
 rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
 
