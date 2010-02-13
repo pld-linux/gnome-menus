@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.28.0.1
+Version:	2.29.6
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	279316228fd84917acb9405476f74b53
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.29/%{name}-%{version}.tar.bz2
+# Source0-md5:	dbf0a1d5c51a4c0e337ab81ddbb198b3
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
@@ -19,6 +19,7 @@ BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 2.3
 BuildRequires:	rpm-pythonprov
+BuildRequires:	sed >= 4.0
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	xdg-menus
 Obsoletes:	gnome-menus-filter-default
@@ -94,6 +95,9 @@ Statyczna biblioteka gnome-menu.
 %prep
 %setup -q
 %patch0 -p1
+
+sed -i -e 's/^en@shaw//' po/LINGUAS 
+rm -f po/en@shaw.po
 
 %build
 %{__glib_gettextize}
