@@ -1,19 +1,20 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.29.91
+Version:	2.29.92
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.29/%{name}-%{version}.tar.bz2
-# Source0-md5:	f784b65b5b3ab067cde4eaabb58fde8d
+# Source0-md5:	26b1598685014fadc2461b0304aad512
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.20.0
 BuildRequires:	gnome-common
+BuildRequires:	gobject-introspection-devel >= 0.6.7
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
@@ -96,7 +97,7 @@ Statyczna biblioteka gnome-menu.
 %setup -q
 %patch0 -p1
 
-sed -i -e 's/^en@shaw//' po/LINGUAS 
+sed -i -e 's/^en@shaw//' po/LINGUAS
 rm -f po/en@shaw.po
 
 %build
@@ -109,7 +110,8 @@ rm -f po/en@shaw.po
 %{__automake}
 %configure \
 	--enable-static \
-	--enable-python
+	--enable-python \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -151,11 +153,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-menu.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgnome-menu.so.2
+%{_libdir}/girepository-1.0/GMenu-2.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-menu.so
 %{_libdir}/libgnome-menu.la
+%{_datadir}/gir-1.0/GMenu-2.0.gir
 %{_pkgconfigdir}/libgnome-menu.pc
 %{_includedir}/gnome-menus
 
