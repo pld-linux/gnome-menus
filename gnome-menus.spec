@@ -1,19 +1,20 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	2.28.0.1
-Release:	2
+Version:	2.30.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	279316228fd84917acb9405476f74b53
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.30/%{name}-%{version}.tar.bz2
+# Source0-md5:	423040cfaf099d65406c405cffd9e409
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.20.0
 BuildRequires:	gnome-common
+BuildRequires:	gobject-introspection-devel >= 0.6.7
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
@@ -105,7 +106,8 @@ Statyczna biblioteka gnome-menu.
 %{__automake}
 %configure \
 	--enable-static \
-	--enable-python
+	--enable-python \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -120,7 +122,7 @@ rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
 
 # unsupported by glibc
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{gn,io}
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{en@shaw,gn,io}
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -149,11 +151,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-menu.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgnome-menu.so.2
+%{_libdir}/girepository-1.0/GMenu-2.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-menu.so
 %{_libdir}/libgnome-menu.la
+%{_datadir}/gir-1.0/GMenu-2.0.gir
 %{_pkgconfigdir}/libgnome-menu.pc
 %{_includedir}/gnome-menus
 
