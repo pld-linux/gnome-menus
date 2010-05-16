@@ -2,7 +2,7 @@ Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	2.30.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.30/%{name}-%{version}.tar.bz2
@@ -42,8 +42,8 @@ freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
 Summary:	Simple menu editor
 Summary(pl.UTF-8):	Prosty edytor menu
 Group:		X11/Applications
-Requires:	%{name} = %{version}-%{release}
 Requires:	python-pygtk-glade >= 2:2.12.0
+Requires:	xdg-menus
 
 %description editor
 Simple menu editor.
