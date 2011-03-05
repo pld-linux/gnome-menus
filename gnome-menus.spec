@@ -2,7 +2,7 @@ Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	2.30.5
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/2.30/%{name}-%{version}.tar.bz2
@@ -24,7 +24,6 @@ Requires:	%{name}-libs = %{version}-%{release}
 Provides:	xdg-menus
 Obsoletes:	gnome-menus-filter-default
 Obsoletes:	gnome-menus-filter-desktop
-Conflicts:	applnk
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
