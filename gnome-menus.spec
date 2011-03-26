@@ -115,13 +115,13 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
 
-# unsupported by glibc
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{en@shaw,gn,io,kg}
+# not supported by glibc (as of 2.13-3)
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{gn,io,kg}
 
 %find_lang %{name} --with-gnome --all-name
 
