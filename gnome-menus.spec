@@ -115,7 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.{a,la,py}
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.py
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
