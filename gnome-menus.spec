@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	3.0.1
+Version:	3.1.90
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	44d4286a4836d33f339d0106228f1088
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.1/%{name}-%{version}.tar.bz2
+# Source0-md5:	f919d01ec6cb5b4a9843494988261685
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.62
@@ -117,7 +117,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.py
-%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/*.{a,la}
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
 
@@ -144,22 +143,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/gmenu-simple-editor.desktop
 %dir %{py_sitedir}/GMenuSimpleEditor
-%attr(755,root,root) %{py_sitedir}/gmenu.so
 %{py_sitedir}/GMenuSimpleEditor/*.py[co]
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgnome-menu.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgnome-menu.so.2
-%{_libdir}/girepository-1.0/GMenu-2.0.typelib
+%attr(755,root,root) %{_libdir}/libgnome-menu-3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgnome-menu-3.so.0
+%{_libdir}/girepository-1.0/GMenu-3.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgnome-menu.so
-%{_datadir}/gir-1.0/GMenu-2.0.gir
-%{_pkgconfigdir}/libgnome-menu.pc
-%{_includedir}/gnome-menus
+%attr(755,root,root) %{_libdir}/libgnome-menu-3.so
+%{_datadir}/gir-1.0/GMenu-3.0.gir
+%{_pkgconfigdir}/libgnome-menu-3.0.pc
+%{_includedir}/gnome-menus-3.0
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libgnome-menu.a
+%{_libdir}/libgnome-menu-3.a
