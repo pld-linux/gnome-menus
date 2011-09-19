@@ -1,18 +1,18 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	3.1.90
+Version:	3.1.92
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	f919d01ec6cb5b4a9843494988261685
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.1/%{name}-%{version}.tar.xz
+# Source0-md5:	642610c767477bbf083b5b9e2a71f5e5
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.20.0
+BuildRequires:	glib2-devel >= 1:2.29.15
 BuildRequires:	gnome-common
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	intltool >= 0.40.0
@@ -20,6 +20,8 @@ BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 2.3
 BuildRequires:	rpm-pythonprov
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	xdg-menus
 Obsoletes:	gnome-menus-filter-default
@@ -71,7 +73,7 @@ Summary:	Header files of gnome-menus library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.20.0
+Requires:	glib2-devel >= 1:2.29.15
 
 %description devel
 Headers for gnome-menus library.
@@ -121,7 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
 
 # not supported by glibc (as of 2.13-3)
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{gn,io,kg}
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{gn,io}
 
 %find_lang %{name} --with-gnome --all-name
 
