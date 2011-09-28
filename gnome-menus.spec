@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	3.2.0
+Version:	3.2.0.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	dd63982f2f13ef8a371c8c428f9ae331
+# Source0-md5:	74ce29e3b30584498cc29287ae049068
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.62
@@ -43,7 +43,7 @@ freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
 Summary:	Simple menu editor
 Summary(pl.UTF-8):	Prosty edytor menu
 Group:		X11/Applications
-Requires:	python-pygtk-glade >= 2:2.12.0
+Requires:	python-pyobject3
 Requires:	xdg-menus
 
 %description editor
