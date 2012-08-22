@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	3.4.2
+Version:	3.5.5
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	997c923d639d80185960185dcd250fc7
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.5/%{name}-%{version}.tar.xz
+# Source0-md5:	efb12afa5e0e0b23d7edd4c44aae16e3
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.62
