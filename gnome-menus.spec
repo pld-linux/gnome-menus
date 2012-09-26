@@ -2,7 +2,7 @@ Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	3.6.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.6/%{name}-%{version}.tar.xz
@@ -12,7 +12,7 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.29.15
+BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	gnome-common
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	intltool >= 0.40.0
@@ -123,7 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
 
 # not supported by glibc (as of 2.13-3)
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{gn,io}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{gn,io,szl}
 
 %find_lang %{name} --with-gnome --all-name
 
