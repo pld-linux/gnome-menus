@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	3.6.0
-Release:	3
+Version:	3.6.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	aa9c9f05c34c346364c8de085ac2e4d8
+# Source0-md5:	69d9e678aa3e496c8f191f51d90bb040
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.62
