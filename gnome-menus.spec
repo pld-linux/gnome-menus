@@ -1,12 +1,12 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	3.6.2
+Version:	3.8.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	c48775f704e7c542496d1fa1a84b2bfd
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.8/%{name}-%{version}.tar.xz
+# Source0-md5:	c1bf2752f3b8e2d0c1e519cc69441450
 Patch0:		%{name}-nokde.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.62
@@ -18,12 +18,11 @@ BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	python-devel >= 2.3
-BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	xdg-menus
+Obsoletes:	gnome-menus-editor
 Obsoletes:	gnome-menus-filter-default
 Obsoletes:	gnome-menus-filter-desktop
 # sr@Latn vs. sr@latin
@@ -38,19 +37,6 @@ http://www.freedesktop.org/Standards/menu-spec .
 %description -l pl.UTF-8
 Pakiet zawiera implementację specyfikacji menu systemów biurkowych z
 freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
-
-%package editor
-Summary:	Simple menu editor
-Summary(pl.UTF-8):	Prosty edytor menu
-Group:		X11/Applications
-Requires:	python-pygobject3
-Requires:	xdg-menus
-
-%description editor
-Simple menu editor.
-
-%description editor -l pl.UTF-8
-Prosty edytor menu.
 
 %package libs
 Summary:	gnome-menus library
@@ -73,7 +59,7 @@ Summary:	Header files of gnome-menus library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki gnome-menus
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.29.15
+Requires:	glib2-devel >= 1:2.30.0
 
 %description devel
 Headers for gnome-menus library.
@@ -107,8 +93,7 @@ Statyczna biblioteka gnome-menu.
 %{__automake}
 %configure \
 	--disable-silent-rules \
-	--enable-static \
-	--enable-python
+	--enable-static
 %{__make}
 
 %install
@@ -118,7 +103,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
-%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/GMenuSimpleEditor/*.py
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
 
@@ -138,14 +122,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %{_sysconfdir}/xdg/menus
 %{_datadir}/desktop-directories
-
-%files editor
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/gmenu-simple-editor
-%{_datadir}/%{name}
-%{_desktopdir}/gmenu-simple-editor.desktop
-%dir %{py_sitedir}/GMenuSimpleEditor
-%{py_sitedir}/GMenuSimpleEditor/*.py[co]
 
 %files libs
 %defattr(644,root,root,755)
