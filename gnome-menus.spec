@@ -1,8 +1,12 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# static library
+#
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	3.10.1
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.10/%{name}-%{version}.tar.xz
@@ -42,6 +46,7 @@ freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
 Summary:	gnome-menus library
 Summary(pl.UTF-8):	Biblioteka gnome-menus
 Group:		Libraries
+Requires:	glib2 >= 1:2.30.0
 Provides:	gnome-vfs-menu-module = 1.1-1
 Provides:	gnome-vfs2-module-menu = 1.1-1
 Obsoletes:	gnome-vfs-menu-module
@@ -93,7 +98,7 @@ Statyczna biblioteka gnome-menu.
 %{__automake}
 %configure \
 	--disable-silent-rules \
-	--enable-static
+	%{!?with_static_libs:--disable-static}
 %{__make}
 
 %install
@@ -106,8 +111,8 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
 
-# not supported by glibc (as of 2.13-3)
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{gn,io,szl}
+# not supported by glibc (as of 2.21-5)
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{gn,io}
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -136,6 +141,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/libgnome-menu-3.0.pc
 %{_includedir}/gnome-menus-3.0
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libgnome-menu-3.a
+%endif
