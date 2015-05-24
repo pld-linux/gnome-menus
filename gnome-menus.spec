@@ -6,7 +6,7 @@ Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	3.10.1
-Release:	3
+Release:	4
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.10/%{name}-%{version}.tar.xz
@@ -113,6 +113,8 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
 
 # not supported by glibc (as of 2.21-5)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{gn,io}
+
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/szl{,_PL}
 
 %find_lang %{name} --with-gnome --all-name
 
