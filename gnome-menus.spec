@@ -5,21 +5,18 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	3.10.1
-Release:	5
+Version:	3.32.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	6db025e79e2b69f39fc7aa0753f43081
-Patch0:		%{name}-nokde.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.32/%{name}-%{version}.tar.xz
+# Source0-md5:	4262208c13f266d9ada7d356aada9e1b
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	gettext-tools
+BuildRequires:	gettext-tools >= 0.19.4
 BuildRequires:	glib2-devel >= 1:2.30.0
-BuildRequires:	gnome-common
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
@@ -86,11 +83,9 @@ Statyczna biblioteka gnome-menu.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{__glib_gettextize}
-%{__intltoolize}
+%{__gettextize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
