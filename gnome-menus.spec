@@ -5,13 +5,13 @@
 Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
-Version:	3.32.0
+Version:	3.36.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.32/%{name}-%{version}.tar.xz
-# Source0-md5:	4262208c13f266d9ada7d356aada9e1b
-URL:		http://www.gnome.org/
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.36/%{name}-%{version}.tar.xz
+# Source0-md5:	a8fd71fcf31a87fc799d80396a526829
+URL:		https://www.gnome.org/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gettext-tools >= 0.19.4
@@ -26,18 +26,16 @@ Provides:	xdg-menus
 Obsoletes:	gnome-menus-editor
 Obsoletes:	gnome-menus-filter-default
 Obsoletes:	gnome-menus-filter-desktop
-# sr@Latn vs. sr@latin
-Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The package contains an implementation of the draft "Desktop Menu
 Specification" from freedesktop.org:
-http://www.freedesktop.org/Standards/menu-spec .
+<http://www.freedesktop.org/Standards/menu-spec>.
 
 %description -l pl.UTF-8
 Pakiet zawiera implementację specyfikacji menu systemów biurkowych z
-freedesktop.org: http://www.freedesktop.org/Standards/menu-spec .
+freedesktop.org: <http://www.freedesktop.org/Standards/menu-spec>.
 
 %package libs
 Summary:	gnome-menus library
