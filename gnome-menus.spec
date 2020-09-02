@@ -6,7 +6,7 @@ Summary:	Implementation of the draft Desktop Menu Specification
 Summary(pl.UTF-8):	Implementacja specyfikacji menu systemów biurkowych
 Name:		gnome-menus
 Version:	3.36.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-menus/3.36/%{name}-%{version}.tar.xz
@@ -22,6 +22,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	filesystem >= 4.1-15
 Provides:	xdg-menus
 Obsoletes:	gnome-menus-editor
 Obsoletes:	gnome-menus-filter-default
@@ -102,8 +103,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/xdg/menus/applications-merged
-
 # not supported by glibc (as of 2.21-5)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{gn,io}
 
@@ -118,8 +117,18 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%{_sysconfdir}/xdg/menus
-%{_datadir}/desktop-directories
+%{_sysconfdir}/xdg/menus/gnome-applications.menu
+%{_datadir}/desktop-directories/AudioVideo.directory
+%{_datadir}/desktop-directories/Development.directory
+%{_datadir}/desktop-directories/Education.directory
+%{_datadir}/desktop-directories/Game.directory
+%{_datadir}/desktop-directories/Graphics.directory
+%{_datadir}/desktop-directories/Network.directory
+%{_datadir}/desktop-directories/Office.directory
+%{_datadir}/desktop-directories/System-Tools.directory
+%{_datadir}/desktop-directories/Utility.directory
+%{_datadir}/desktop-directories/Utility-Accessibility.directory
+%{_datadir}/desktop-directories/X-GNOME-*.directory
 
 %files libs
 %defattr(644,root,root,755)
